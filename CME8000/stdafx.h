@@ -68,7 +68,7 @@
 	#pragma comment(lib, "CSGridR.lib")
 #endif
 
-#define MAIN_VERSION	_T("V 2.0.0.14")
+#define MAIN_VERSION	_T("V 2.0.0.18")
 //
 //#define AJIN_BOARD_USE
 //#define LOT_BARCODE_USE
@@ -118,7 +118,7 @@ typedef struct {
 	BOOL	IndexDone[3];				// 0:Load, 1:Assembly 2:Trans
 	int		InfoLoadTray[LT_Y][LT_X];	// Load Tray 정보 표시 (0:Not Use, 9:Use)
 	int		InfoCapTray[CT_Y][CT_X];	// Cap Tray 정보 표시 (0:Not Use, 9:Use)
-	int		STY;						// Ship Tray 라인수 (R43B:7, R44B:6)
+	int		STY;						// Ship Tray 라인수 (R53B:7, R54B:6)
 	int		InfoShipTray[ST_Y][ST_X];	// Ship Tray 정보 표시 (0:Not Use, 1:Exist)
 
 	int		InfoIndex[3][PICK];			// Index 정보 표시 0: 좌측	(0:Not Use, 1:Exist)
