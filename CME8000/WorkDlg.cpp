@@ -396,6 +396,8 @@ void CWorkDlg::OnTimer(UINT_PTR nIDEvent)
 			pMainDlg->Set_EquipRunStart();
 			MachineStopLog("RUN_START");
 
+			SetTimer(1, 2000, NULL);
+
 		} else {				// Auto Running
 			if (!g_objSequenceMain.Is_MainThreadRun()) {
 				g_objLogFile.Save_HandlerLog("[Work Mode] Auto STOP");
@@ -429,8 +431,16 @@ void CWorkDlg::OnTimer(UINT_PTR nIDEvent)
 	}
 
 	int nMode = theApp.Get_MainMode();
-	if (nMode == MODE_OPERATOR || nMode == MODE_WORK) SetTimer(0, 100, NULL);
-	else											  KillTimer(0);
+	if (nMode == MODE_OPERATOR || nMode == MODE_WORK)
+	{
+		SetTimer(0, 100, NULL);
+		SetTimer(1, 2000, NULL);
+	}
+	else
+	{
+		KillTimer(0);
+		KillTimer(1);
+	}
 
 	CDialogEx::OnTimer(nIDEvent);
 }
@@ -1143,8 +1153,6 @@ void CWorkDlg::Display_Status()
 	for (int i = 0; i < PICK; i++) { strText.Format("%d-%d", gData.nTNoIndex[2][i], gData.nCNoIndex[2][i]); m_stcTransNo[i].Set_Text(strText); }
 	for (int i = 0; i < PICK; i++) { strText.Format("%d-%d", gData.nTNoTransStage[i], gData.nCNoTransStage[i]); m_stcTStageNo[i].Set_Text(strText); }
 	for (int i = 0; i < PICK; i++) { strText.Format("%d-%d", gData.nTNoUnloadPick[i], gData.nCNoUnloadPick[i]); m_stcUnloadNo[i].Set_Text(strText); }
-
-	g_objAviHandler.Set_ConnectRequest();
 
 	m_ledVisionStatus[0].Set_On(g_objInspector.Get_VisionStatus());
 	m_ledVisionStatus[1].Set_On(pEquipData->bUseInlineMode && g_objAviHandler.Is_Connected());
