@@ -346,7 +346,7 @@ void CWorkDlg::OnTimer(UINT_PTR nIDEvent)
 	KillTimer(0);
 
 
-	if(!g_objAviHandler.Is_Connected() && nIDEvent == 1){
+	if( nIDEvent == 1){
 		g_objAviHandler.Set_ConnectRequest();
 	}
 
@@ -396,7 +396,7 @@ void CWorkDlg::OnTimer(UINT_PTR nIDEvent)
 			pMainDlg->Set_EquipRunStart();
 			MachineStopLog("RUN_START");
 
-			SetTimer(1, 2000, NULL);
+			//SetTimer(1, 2000, NULL);
 
 		} else {				// Auto Running
 			if (!g_objSequenceMain.Is_MainThreadRun()) {
@@ -439,7 +439,7 @@ void CWorkDlg::OnTimer(UINT_PTR nIDEvent)
 	else
 	{
 		KillTimer(0);
-		KillTimer(1);
+		//KillTimer(1);
 	}
 
 	CDialogEx::OnTimer(nIDEvent);
