@@ -223,7 +223,9 @@ public:
 
 	void Init_NgTray(int nNo);
 
-	void Test_CSKIM();	// Run Test
+	BOOL Check_Mode();
+
+	
 };
 
 extern CSequenceMain g_objSequenceMain;
