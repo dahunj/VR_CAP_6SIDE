@@ -333,7 +333,7 @@ void CWorkDlg::OnShowWindow(BOOL bShow, UINT nStatus)
 		g_objCommon.Locking_MainDoor(FALSE);
 
 		SetTimer(0, 100, NULL);
-		SetTimer(1, 2000, NULL);
+		SetTimer(1, 5000, NULL);
 
 	} else {
 		KillTimer(0);
@@ -344,7 +344,6 @@ void CWorkDlg::OnShowWindow(BOOL bShow, UINT nStatus)
 void CWorkDlg::OnTimer(UINT_PTR nIDEvent)
 {
 	KillTimer(0);
-
 
 	if( nIDEvent == 1){
 		g_objAviHandler.Set_ConnectRequest();
@@ -395,9 +394,7 @@ void CWorkDlg::OnTimer(UINT_PTR nIDEvent)
 			g_objSequenceMain.Begin_MainRunThread();
 			pMainDlg->Set_EquipRunStart();
 			MachineStopLog("RUN_START");
-
-			//SetTimer(1, 2000, NULL);
-
+			
 		} else {				// Auto Running
 			if (!g_objSequenceMain.Is_MainThreadRun()) {
 				g_objLogFile.Save_HandlerLog("[Work Mode] Auto STOP");
@@ -434,7 +431,7 @@ void CWorkDlg::OnTimer(UINT_PTR nIDEvent)
 	if (nMode == MODE_OPERATOR || nMode == MODE_WORK)
 	{
 		SetTimer(0, 100, NULL);
-		SetTimer(1, 2000, NULL);
+		SetTimer(1, 5000, NULL);
 	}
 	else
 	{
