@@ -435,8 +435,7 @@ void CWorkDlg::OnTimer(UINT_PTR nIDEvent)
 	}
 	else
 	{
-		KillTimer(0);
-		//KillTimer(1);
+		KillTimer(0);		
 	}
 
 	CDialogEx::OnTimer(nIDEvent);
