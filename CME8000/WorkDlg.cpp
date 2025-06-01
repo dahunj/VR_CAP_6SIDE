@@ -270,7 +270,7 @@ void CWorkDlg::OnShowWindow(BOOL bShow, UINT nStatus)
 	if (bShow) {
 		Change_Model();
 
-		g_objAviHandler.Set_ConnectStatus (FALSE);
+		//g_objAviHandler.Set_ConnectStatus (FALSE);
 
 		EQUIP_DATA *pEquipData = g_objDataManager.Get_pEquipData();
 		CString strText;
